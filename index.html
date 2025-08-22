@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FUT Rating Calculator</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #222;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.6);
+            width: 420px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        h2 {
+            text-align: center;
+            color: #ffd700;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            margin-top: 15px;
+            width: 100%;
+            padding: 10px;
+            background: #ffd700;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #e6c200;
+        }
+        .results {
+            margin-top: 20px;
+            background: #333;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .results h3 {
+            margin-bottom: 10px;
+            color: #00ff88;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .stats div {
+            background: #444;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        .ovr {
+            margin-top: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffd700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>FUT Rating Calculator</h2>
+
+        <label>Position</label>
+        <select id="pos">
+            <option value="Forward">Forward</option>
+            <option value="Mid">Mid</option>
+            <option value="Def">Def</option>
+            <option value="GK">GK</option>
+        </select>
+
+        <label>Acceleration (sec)</label>
+        <input type="number" id="acc" step="0.1">
+
+        <label>Speed (m/s)</label>
+        <input type="number" id="spd" step="0.1">
+
+        <label>Shooting (Finishing 0–10)</label>
+        <input type="number" id="fin">
+
+        <label>Shooting (Long Shot 0–10)</label>
+        <input type="number" id="long">
+
+        <label>Shooting (Volley 0–10)</label>
+        <input type="number" id="voll">
+
+        <label>Shooting (Penalty 0–10)</label>
+        <input type="number" id="pen">
+
+        <label>Shooting (Shot Power 0–100)</label>
+        <input type="number" id="sp">
+
+        <label>Passing (Short 0–10)</label>
+        <input type="number" id="shortp">
+
+        <label>Passing (Long 0–10)</label>
+        <input type="number" id="longp">
+
+        <label>Agility (0–10)</label>
+        <input type="number" id="ag">
+
+        <label>Reactions (sec)</label>
+        <input type="number" id="rc" step="0.1">
+
+        <label>Ball Control (0–20)</label>
+        <input type="number" id="bc">
+
+        <label>Dribbling (0–10)</label>
+        <input type="number" id="drib">
+
+        <label>Heading (0–10)</label>
+        <input type="number" id="head">
+
+        <label>Tackle (0–5)</label>
+        <input type="number" id="tackle">
+
+        <label>Stamina (meters in 3')</label>
+        <input type="number" id="stamina">
+
+        <button onclick="calculate()">Calculate</button>
+
+        <div class="results" id="results" style="display:none;">
+            <h3>Player Stats</h3>
+            <div class="stats">
+                <div>PAC: <span id="pacVal">-</span></div>
+                <div>SHO: <span id="shoVal">-</span></div>
+                <div>PAS: <span id="pasVal">-</span></div>
+                <div>DRI: <span id="driVal">-</span></div>
+                <div>DEF: <span id="defVal">-</span></div>
+                <div>PHY: <span id="phyVal">-</span></div>
+            </div>
+            <div class="ovr">OVR: <span id="ovrVal">-</span></div>
+        </div>
+    </div>
+
+    <script src="fut.js"></script>
+</body>
+</html>
